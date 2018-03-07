@@ -32,9 +32,12 @@ namespace PlatformerGame.Entities.Components
             entity.Attach<SpriteComponent>()
                 .Sprite = new Sprite(alienGreen_stand);
 
-            entity.Attach<PlayerComponent>()
-                .MoveTo(position);
+            entity.Attach<PlayerComponent>();
 
+            entity.Attach<TransformComponent>()
+                .Position = new Vector2(-20f, 5);
+
+            entity.Attach<CollisionBodyComponent>();
             entity.Attach<PlayerController>();
 
             entity.Attach<SpriteBatchComponent>()
@@ -49,6 +52,8 @@ namespace PlatformerGame.Entities.Components
 
             entity.Attach<TiledMapComponent>()
                 .Map = level;
+
+            // add the poly line layer as body collsion
 
             entity.Attach<TiledMapRendererComponent>()
                 .Renderer = new TiledMapRenderer(Game.GraphicsDevice);
