@@ -10,14 +10,21 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:C:\Users\jo116\.nuget\packages\monogame.extended.content.pipeline\1.0.617\tools\MonoGame.Extended.Content.Pipeline.dll
+/reference:..\..\packages\MonoGame.Extended.Content.Pipeline.1.0.617\tools\MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Levels/testlevel.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:Levels/testlevel.tmx
+#begin Assets/alienGreen_stand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Assets/alienGreen_stand.png
 
 #begin Assets/spritesheet_ground.png
 /importer:TextureImporter
@@ -43,15 +50,8 @@
 /processorParam:TextureFormat=Color
 /build:Assets/spritesheet_players.png
 
-#begin Assets/alienGreen_stand.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Assets/alienGreen_stand.png
+#begin Levels/testlevel.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:Levels/testlevel.tmx
 

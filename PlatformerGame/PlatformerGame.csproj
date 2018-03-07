@@ -58,29 +58,20 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Extended, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\MonoGame.Extended.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Extended.Animations, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\MonoGame.Extended.Animations.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Animations.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Extended.Entities, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\MonoGame.Extended.Entities.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Entities.dll</HintPath>
+      <HintPath>..\packages\MonoGame.Extended.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Graphics, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\MonoGame.Extended.Graphics.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Graphics.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Extended.Particles, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\MonoGame.Extended.Particles.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Particles.dll</HintPath>
+      <HintPath>..\packages\MonoGame.Extended.Graphics.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Graphics.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Tiled, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\MonoGame.Extended.Tiled.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Tiled.dll</HintPath>
+      <HintPath>..\packages\MonoGame.Extended.Tiled.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Tiled.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Dokumente\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
