@@ -4,41 +4,60 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Additions.Entities;
 using MonoGame.Additions.Entities.Components;
 using MonoGame.Additions.Graphics;
+using MonoGame.Extended.Tiled;
+using MonoGame.Extended.Tiled.Graphics;
 
 namespace PlatformerGame.Entities.Components
 {
-    internal sealed class EntityFactory
+    internal sealed class EntityFactory : DrawableGameComponent
     {
-        public EntityFactory(EntityComponentSystem ecs, ContentManager content)
+        public EntityFactory(Game game, EntityComponentSystem ecs) : base(game)
         {
             Ecs = ecs;
 
-            LoadContent(content);
+            Content = new ContentManager(Game.Content.ServiceProvider, game.Content.RootDirectory);
         }
 
-        private void LoadContent(ContentManager content)
+        protected override void LoadContent()
         {
-            PixelArt = content.Load<Texture2D>("Assets/PixelArt");
+            base.LoadContent();
+
+            alienGreen_stand = Content.Load<Texture2D>("Assets/alienGreen_stand");
         }
 
         public Entity CreatePlayer(Vector2 position)
         {
             var entity = Ecs.CreateEntity();
 
-            entity.Attach<PlayerComponent>();
+            entity.Attach<SpriteComponent>()
+                .Sprite = new Sprite(alienGreen_stand);
+
+            entity.Attach<PlayerComponent>()
+                .MoveTo(position);
+
             entity.Attach<PlayerController>();
 
-            var spriteBatchComponent = entity.Attach<SpriteBatchComponent>();
-            spriteBatchComponent.SpriteBatch = Ecs.Game.Services.GetService<SpriteBatch>();
+            entity.Attach<SpriteBatchComponent>()
+                .SpriteBatch = Ecs.Game.Services.GetService<SpriteBatch>();
+                        
+            return entity;
+        }
 
-            var spriteComponent = entity.Attach<SpriteComponent>();
-            spriteComponent.Sprite = new Sprite(PixelArt);
-            spriteComponent.Sprite.Scale = 0.5f;
+        public Entity CreateLevel(TiledMap level)
+        {
+            var entity = Ecs.CreateEntity();
+
+            entity.Attach<TiledMapComponent>()
+                .Map = level;
+
+            entity.Attach<TiledMapRendererComponent>()
+                .Renderer = new TiledMapRenderer(Game.GraphicsDevice);
 
             return entity;
         }
         
         private EntityComponentSystem Ecs { get; }
-        private Texture2D PixelArt;
+        private ContentManager Content { get; }
+        private Texture2D alienGreen_stand;
     }
 }

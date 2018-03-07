@@ -43,7 +43,7 @@
 /processorParam:TextureFormat=Color
 /build:Assets/spritesheet_players.png
 
-#begin Assets/PixelArt.png
+#begin Assets/alienGreen_stand.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -53,5 +53,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Assets/PixelArt.png
+/build:Assets/alienGreen_stand.png
 

@@ -33,6 +33,7 @@ namespace PlatformerGame.Entities.Components
         public Vector2 Position { get; private set; }
         public float Scale { get; set; }
         public float Rotation { get; set; }
+        public Vector2 Origin { get; set; }
 
         public Vector2 Acceleration { get; set; }
         public Vector2 Velocity { get; set; }

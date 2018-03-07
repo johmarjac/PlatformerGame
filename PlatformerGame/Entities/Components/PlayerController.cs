@@ -7,5 +7,6 @@ namespace PlatformerGame.Entities.Components
     {
         public Keys MoveRightKey = Keys.D;
         public Keys MoveLeftKey = Keys.A;
+        public Keys JumpKey = Keys.Space;
     }
 }

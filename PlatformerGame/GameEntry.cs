@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.ViewportAdapters;
-using PlatformerGame.Entities.Levels;
 using PlatformerGame.Scenes;
 
 namespace PlatformerGame
@@ -23,13 +21,12 @@ namespace PlatformerGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Services.AddService(spriteBatch);
-
-            Services.AddService(new LevelManager(this));
-            Services.GetService<LevelManager>().LoadLevels();
-
-            Services.AddService(new BoxingViewportAdapter(Window, GraphicsDevice, 1024, 768));
-            Services.AddService(new Camera2D(Services.GetService<BoxingViewportAdapter>()));
             
+            Services.AddService(new BoxingViewportAdapter(Window, GraphicsDevice, 1024, 768));
+
+            camera = new Camera2D(Services.GetService<BoxingViewportAdapter>());
+            camera.ZoomOut(0.5f);
+            Services.AddService(camera);
 
             Components.Add(new ScreenGameComponent(this, new[] { new Ingame(this) }));
             base.Initialize();
@@ -51,10 +48,14 @@ namespace PlatformerGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin(transformMatrix: camera.GetViewMatrix());
             base.Draw(gameTime);
+            spriteBatch.End();
         }
 
         private GraphicsDeviceManager graphics;
+        private Camera2D camera;
         private SpriteBatch spriteBatch;
     }
 }
