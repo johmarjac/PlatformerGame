@@ -57,23 +57,26 @@ namespace PlatformerGame.Entities.Systems
 
                 if(!body.IsStatic)
                 {
-                    for(int i = 0; i < (layer.Objects[0] as TiledMapPolylineObject).Points.Length - 1; i++)
+                    for (int j = 0; j < layer.Objects.Length; j++)
                     {
-                        var obj = layer.Objects[0] as TiledMapPolylineObject;
-                        var currentPoint = obj.Points[i] + obj.Position;
-                        var nextPoint = obj.Points[i + 1] + obj.Position;
-
-                        if(transform.Position.X + (transform.BoundingRectangle.Width * 0.5f) >= currentPoint.X && transform.Position.X + (transform.BoundingRectangle.Width * 0.5f) < nextPoint.X)
+                        for (int i = 0; i < (layer.Objects[j] as TiledMapPolylineObject).Points.Length - 1; i++)
                         {
-                            float lineY = SolveLinearEquation(currentPoint, nextPoint, transform.Position.X + (transform.BoundingRectangle.Width * 0.5f));
+                            var obj = layer.Objects[j] as TiledMapPolylineObject;
+                            var currentPoint = obj.Points[i] + obj.Position;
+                            var nextPoint = obj.Points[i + 1] + obj.Position;
 
-                            if ((transform.Position.Y + transform.BoundingRectangle.Height > lineY))
+                            if (transform.Position.X + (transform.BoundingRectangle.Width * 0.5f) >= currentPoint.X && transform.Position.X + (transform.BoundingRectangle.Width * 0.5f) < nextPoint.X)
                             {
-                                if(player.IsOnGround)
-                                    body.Velocity = new Vector2(body.Velocity.X, 0);
+                                float lineY = SolveLinearEquation(currentPoint, nextPoint, transform.Position.X + (transform.BoundingRectangle.Width * 0.5f));
 
-                                transform.Position = new Vector2(transform.Position.X, lineY - transform.BoundingRectangle.Height);
-                                player.IsOnGround = true;
+                                if ((transform.Position.Y + transform.BoundingRectangle.Height > lineY))
+                                {
+                                    if (player.IsOnGround)
+                                        body.Velocity = new Vector2(body.Velocity.X, 0);
+
+                                    transform.Position = new Vector2(transform.Position.X, lineY - transform.BoundingRectangle.Height);
+                                    player.IsOnGround = true;
+                                }
                             }
                         }
                     }
