@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Additions.Entities;
+using MonoGame.Additions.Entities.Components;
 using MonoGame.Extended;
 using MonoGame.Extended.Screens;
 using PlatformerGame.Entities.Components;
@@ -33,14 +35,14 @@ namespace PlatformerGame.Scenes
             LevelManager.SetLevel("Levels\\testlevel");
 
             Level = EntityFactory.CreateLevel(LevelManager.CurrentLevel.Map);
-            MyPlayer = EntityFactory.CreatePlayer(new Vector2(5, -20));
+            MyPlayer = EntityFactory.CreatePlayer(Vector2.Zero);
         }
-        
-        private float SolveLinearEquation(Point2 p1, Point2 p2, float x)
+
+        public override void Update(GameTime gameTime)
         {
-            var m = (p1.Y - p2.Y) / (p1.X - p2.X);
-            var b = p1.Y - (m * p1.X);
-            return m * x + b;
+            base.Update(gameTime);
+
+            Game.Services.GetService<Camera2D>().LookAt(MyPlayer.GetComponent<TransformComponent>().Position);
         }
 
         private Game Game;

@@ -13,9 +13,8 @@ namespace PlatformerGame.Entities.Components
     {
         public EntityFactory(Game game, EntityComponentSystem ecs) : base(game)
         {
-            Ecs = ecs;
-
             Content = new ContentManager(Game.Content.ServiceProvider, game.Content.RootDirectory);
+            Ecs = ecs;
         }
 
         protected override void LoadContent()
@@ -29,16 +28,15 @@ namespace PlatformerGame.Entities.Components
         {
             var entity = Ecs.CreateEntity();
 
+            entity.Attach<TransformComponent>()
+                .Size = alienGreen_stand.Bounds.Size.ToVector2();
+
             entity.Attach<SpriteComponent>()
                 .Sprite = new Sprite(alienGreen_stand);
 
-            entity.Attach<PlayerComponent>();
-
-            entity.Attach<TransformComponent>()
-                .Position = new Vector2(-20f, 5);
-
-            entity.Attach<CollisionBodyComponent>();
-            entity.Attach<PlayerController>();
+           entity.Attach<PlayerComponent>();
+           entity.Attach<RigidbodyComponent>();
+           entity.Attach<PlayerController>();
 
             entity.Attach<SpriteBatchComponent>()
                 .SpriteBatch = Ecs.Game.Services.GetService<SpriteBatch>();
@@ -52,8 +50,6 @@ namespace PlatformerGame.Entities.Components
 
             entity.Attach<TiledMapComponent>()
                 .Map = level;
-
-            // add the poly line layer as body collsion
 
             entity.Attach<TiledMapRendererComponent>()
                 .Renderer = new TiledMapRenderer(Game.GraphicsDevice);

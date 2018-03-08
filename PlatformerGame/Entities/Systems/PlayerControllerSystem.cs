@@ -2,47 +2,46 @@
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Additions.Entities;
 using MonoGame.Additions.Entities.Attributes;
+using MonoGame.Additions.Entities.Components;
 using PlatformerGame.Entities.Components;
 
 namespace PlatformerGame.Entities.Systems
 {
     [ComponentSystem]
-    [RequiredComponents(typeof(PlayerController), typeof(PlayerComponent))]
+    [RequiredComponents(typeof(PlayerController), typeof(PlayerComponent), typeof(RigidbodyComponent))]
     public class PlayerControllerSystem : ComponentSystem
-    {
-        private readonly Vector2 GravityVec = new Vector2(0, 9.8f);
-        
+    {        
         public override void UpdateEntity(Entity entity, GameTime gameTime)
         {
             base.UpdateEntity(entity, gameTime);
 
             var controller = entity.GetComponent<PlayerController>();
             var player = entity.GetComponent<PlayerComponent>();
+            var body = entity.GetComponent<RigidbodyComponent>();
+            var sprite = entity.GetComponent<SpriteComponent>();
 
             var state = Keyboard.GetState();
 
             if(state.IsKeyDown(controller.MoveLeftKey))
             {
-                player.MoveBy(new Vector2(-player.WalkSpeed * gameTime.ElapsedGameTime.Milliseconds, 0));
+                body.Velocity = new Vector2(-player.MaxWalkSpeed, body.Velocity.Y);
+                sprite.Sprite.Effect = Microsoft.Xna.Framework.Graphics.SpriteEffects.FlipHorizontally;
             }
-            
-            if(state.IsKeyDown(controller.MoveRightKey))
+            else if(state.IsKeyDown(controller.MoveRightKey))
             {
-                player.MoveBy(new Vector2(player.WalkSpeed * gameTime.ElapsedGameTime.Milliseconds, 0));
+                body.Velocity = new Vector2(player.MaxWalkSpeed, body.Velocity.Y);
+                sprite.Sprite.Effect = Microsoft.Xna.Framework.Graphics.SpriteEffects.None;
+            }
+            else
+            {
+                body.Velocity = new Vector2(0, body.Velocity.Y);
             }
 
-            //if(state.IsKeyDown(controller.JumpKey) && player.IsOnGround)
-            //{
-            //    player.Acceleration = new Vector2(player.Acceleration.X, -150f);
-            //    player.IsOnGround = false;
-            //}
-            //else
-            //    player.Acceleration = GravityVec;
-
-            //player.MoveBy(player.Velocity * gameTime.ElapsedGameTime.Milliseconds * 0.005f);
-            
-            //if(!player.IsOnGround)
-            //    player.Velocity += player.Acceleration;
+            if(state.IsKeyDown(controller.JumpKey) && player.IsOnGround)
+            {
+                body.Velocity = new Vector2(0, -100f);
+                player.IsOnGround = false;
+            }
         }
     }
 }

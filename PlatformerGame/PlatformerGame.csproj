@@ -42,12 +42,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Entities\Components\CollisionBodyComponent.cs" />
     <Compile Include="Entities\Components\PhysicsSystem.cs" />
     <Compile Include="Entities\Components\PlayerController.cs" />
     <Compile Include="Entities\Components\TiledMapComponent.cs" />
     <Compile Include="Entities\Components\TiledMapRendererComponent.cs" />
-    <Compile Include="Entities\Components\TransformComponent.cs" />
     <Compile Include="Entities\EntityFactory.cs" />
     <Compile Include="Entities\Components\PlayerComponent.cs" />
     <Compile Include="Entities\Levels\Level.cs" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="right-down" width="30" height="10" tilewidth="128" tileheight="128" infinite="0" nextobjectid="3">
+<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="right-down" width="30" height="10" tilewidth="128" tileheight="128" infinite="0" nextobjectid="4">
  <tileset firstgid="1" source="../Tilesets/grounds.tsx"/>
  <layer name="Terrain" width="30" height="10">
   <data encoding="csv">
@@ -15,4 +15,9 @@
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
 </data>
  </layer>
+ <objectgroup name="Collision">
+  <object id="3" x="0" y="768">
+   <polyline points="0,0 640,0 768,-128 896,-128 1024,0 3840,0"/>
+  </object>
+ </objectgroup>
 </map>

@@ -6,9 +6,10 @@ namespace PlatformerGame.Entities.Components
     {
         public PlayerComponent()
         {
-            WalkSpeed = 1f;
+            MaxWalkSpeed = 50f;
         }
         
-        public float WalkSpeed { get; set; }
+        public float MaxWalkSpeed { get; set; }
+        public bool IsOnGround { get; set; }
     }
 }
